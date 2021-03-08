@@ -14,6 +14,7 @@ pipeline {
       }
       steps {
         sh 'packer validate BaseAmi.json'     
+        sh 'packer build BaseAmi.json'  
       }
     }
   }
