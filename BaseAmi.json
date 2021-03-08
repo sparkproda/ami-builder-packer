@@ -1,0 +1,49 @@
+{
+    "variables": {
+      "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+      "vpc_region": "",
+      "vpc_id": "",
+      "vpc_public_sn_id": "",
+      "source_ami": "test",
+      "vpc_public_sg_id": "",
+      "instance_type": "",
+      "ssh_username": ""
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "access_key": "{{ user `aws_access_key` }}",
+        "secret_key": "{{ user `aws_secret_key` }}",
+        "region": "ap-southeast-2",
+        "associate_public_ip_address": true,
+        "security_group_id": "",
+        "source_ami": "ami-be3559cd",
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu",
+        "ami_name": "base-ubuntu-aws-base-{{timestamp}}",
+        "ami_groups": "all",
+        "launch_block_device_mappings": [
+          {
+            "device_name": "/dev/sda1",
+            "volume_type": "gp2",
+            "volume_size": "30",
+            "delete_on_termination": true
+          }
+        ]
+      }
+    ],
+    "provisioners": [     
+      {
+        "type": "ansible-local",
+        "playbook_file": "ansible_common.yml"
+      }
+    ],
+    "post-processors": [
+      {
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+      }
+    ]
+  }
