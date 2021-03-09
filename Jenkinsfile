@@ -6,15 +6,9 @@ pipeline {
   }
   stages {
     stage ('Build')  {
-      agent {
-        docker {
-          image 'packer_spark:v1'
-          args '-u root:docker -v /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro --dns 8.8.8.8'
-        }
-      }
+
       steps {
-        sh 'whoami'
-        sh 'packer validate BaseAmi.json'     
+        sh 'whoami'   
         
       }
     }
