@@ -50,7 +50,7 @@
       apt:
         name: "{{ item }}"
         state: absent
-      loop:
+      with_items:
         - docker 
         - docker-engine 
         - docker.io
