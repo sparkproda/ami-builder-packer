@@ -1,9 +1,8 @@
 ---
 - hosts: all
   gather_facts: no
+  remote_user: ubuntu
   become: true
-  vars:
-    username: vagrant
 
   tasks:
     - name: Update and upgrade apt package
