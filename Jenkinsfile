@@ -13,6 +13,7 @@ pipeline {
         }
       }
       steps {
+        sh 'whoami'
         sh 'packer validate BaseAmi.json'     
         
       }
