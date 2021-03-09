@@ -17,7 +17,7 @@
         "region": "ap-northeast-2",
         "vpc_id": "vpc-f8bc3a93",
         "associate_public_ip_address": true,
-        "security_group_id": "sg-29867553",
+        "security_group_id": "",
         "source_ami_filter": {
           "filters": {
           "virtualization-type": "hvm",
@@ -36,8 +36,7 @@
         "tags": {
           "Name": "sparkproda",
           "TEAM": "sparkproda"
-        },
-        "ami_users": ["이 AMI를 공유할 AWS Account ID 목록"],        
+        },  
         "launch_block_device_mappings": [
           {
             "device_name": "/dev/sda1",
