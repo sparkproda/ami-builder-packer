@@ -52,7 +52,7 @@
       {
         "type": "ansible",
         "playbook_file": "ansible_common.yml",
-        "extra_arguments”: "-vvvv"
+        "extra_arguments": [ "-vvvv" ]
       }
     ],
     "post-processors": [
