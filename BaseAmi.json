@@ -5,7 +5,6 @@
       "vpc_region": "",
       "vpc_id": "",
       "vpc_public_sn_id": "",
-      "source_ami": "test",
       "vpc_public_sg_id": "",
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu"
@@ -22,7 +21,7 @@
           "filters": {
           "virtualization-type": "hvm",
           "architecture": "x86_64",
-          "name": "ubuntu/images/\*ubuntu-xenial-18.04-amd64-server-\*",
+          "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
           "block-device-mapping.volume-type": "gp2",
           "root-device-type": "ebs"
           },
@@ -30,8 +29,13 @@
         },  
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
-        "ami_name": "base-ubuntu-aws-base-{{timestamp}}",
+        "ami_name": "base-ubuntu-18.04-aws-base-{{timestamp}}",
         "ami_groups": "all",
+        "tags": {
+          "Name": "sparkproda",
+          "TEAM": "sparkproda",
+        },
+        "ami_users": ["이 AMI를 공유할 AWS Account ID 목록"],        
         "launch_block_device_mappings": [
           {
             "device_name": "/dev/sda1",
