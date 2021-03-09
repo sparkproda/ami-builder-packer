@@ -59,6 +59,73 @@ CMD ["/bin/bash"]
 
 ## Step 1: Prep Packer template
 
+~~~
+{
+    "variables": {
+      "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+      "vpc_region": "",
+      "vpc_id": "vpc-f8bc3a93",
+      "vpc_public_sn_id": "",
+      "vpc_public_sg_id": "",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "access_key": "{{ user `aws_access_key` }}",
+        "secret_key": "{{ user `aws_secret_key` }}",
+        "region": "ap-northeast-2",
+        "vpc_id": "vpc-f8bc3a93",
+        "associate_public_ip_address": true,
+        "security_group_id": "",
+        "source_ami_filter": {
+          "filters": {
+          "virtualization-type": "hvm",
+          "architecture": "x86_64",
+          "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
+          "block-device-mapping.volume-type": "gp2",
+          "root-device-type": "ebs"
+          },
+          "owners": ["099720109477"],
+          "most_recent": true
+        },  
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu",
+        "ami_name": "base-ubuntu-18.04-aws-base-{{timestamp}}",
+        "ami_groups": "all",
+        "tags": {
+          "Name": "sparkproda",
+          "TEAM": "sparkproda"
+        },  
+        "launch_block_device_mappings": [
+          {
+            "device_name": "/dev/sda1",
+            "volume_type": "gp2",
+            "volume_size": "30",
+            "delete_on_termination": true
+          }
+        ]
+      }
+    ],
+    "provisioners": [     
+      {
+        "type": "ansible",
+        "playbook_file": "ansible_common.yml",
+        "extra_arguments": [ "-vvvv" ]
+      }
+    ],
+    "post-processors": [
+      {
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+      }
+    ]
+  }
+~~~
+
 
 젠킨스를 사용하여 빌드합니다. 빌드할 때 agent는 사전에 생성한 packer docker image를 사용합니다. 
 

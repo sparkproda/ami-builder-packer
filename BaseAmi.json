@@ -3,7 +3,7 @@
       "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
       "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
       "vpc_region": "",
-      "vpc_id": "vpc-f8bc3a93",
+      "vpc_id": "",
       "vpc_public_sn_id": "",
       "vpc_public_sg_id": "",
       "instance_type": "t2.micro",
@@ -15,7 +15,7 @@
         "access_key": "{{ user `aws_access_key` }}",
         "secret_key": "{{ user `aws_secret_key` }}",
         "region": "ap-northeast-2",
-        "vpc_id": "vpc-f8bc3a93",
+        "vpc_id": "",
         "associate_public_ip_address": true,
         "security_group_id": "",
         "source_ami_filter": {
