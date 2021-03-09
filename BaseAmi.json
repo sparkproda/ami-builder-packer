@@ -33,7 +33,7 @@
         "ami_groups": "all",
         "tags": {
           "Name": "sparkproda",
-          "TEAM": "sparkproda",
+          "TEAM": "sparkproda"
         },
         "ami_users": ["이 AMI를 공유할 AWS Account ID 목록"],        
         "launch_block_device_mappings": [
