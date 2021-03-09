@@ -6,9 +6,15 @@ pipeline {
   }
   stages {
     stage ('Build')  {
-
+      agent {
+        docker {
+          image 'packer_spark:v1'
+          args '--dns 8.8.8.8'
+        }
+      }
       steps {
-        sh 'whoami'   
+        sh 'whoami'
+        sh 'packer validate BaseAmi.json'     
         
       }
     }
