@@ -9,7 +9,7 @@ pipeline {
       agent {
         docker {
           image 'packer_spark:v1'
-          args '-u root:root -v /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro'
+          args '-u root:root -v /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro --dns 8.8.8.8'
         }
       }
       steps {
