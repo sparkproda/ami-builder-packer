@@ -3,7 +3,7 @@
       "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
       "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
       "vpc_region": "",
-      "vpc_id": "",
+      "vpc_id": "vpc-f8bc3a93",
       "vpc_public_sn_id": "",
       "vpc_public_sg_id": "",
       "instance_type": "t2.micro",
@@ -14,9 +14,10 @@
         "type": "amazon-ebs",
         "access_key": "{{ user `aws_access_key` }}",
         "secret_key": "{{ user `aws_secret_key` }}",
-        "region": "ap-southeast-2",
+        "region": "ap-northeast-2",
+        "vpc_id": "vpc-f8bc3a93",
         "associate_public_ip_address": true,
-        "security_group_id": "",
+        "security_group_id": "sg-29867553",
         "source_ami_filter": {
           "filters": {
           "virtualization-type": "hvm",
@@ -49,8 +50,9 @@
     ],
     "provisioners": [     
       {
-        "type": "ansible-local",
-        "playbook_file": "ansible_common.yml"
+        "type": "ansible",
+        "playbook_file": "ansible_common.yml",
+        "extra_arguments”: "-vvvv"
       }
     ],
     "post-processors": [

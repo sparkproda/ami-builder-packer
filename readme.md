@@ -1,7 +1,9 @@
-# Building custom AMI using Packer and Jenkins
+# Automated AWS AMI builds for Jenkins agents with Packer
 
 젠킨스 agent로 활용하기 위해서 Packer docker image를 생성합니다. 
 packer dockerfile은 packer, ansible, awscli 구성을 포함하여 아래와 같이 작성했습니다.
+Pakcer에서 빌드 타입이 amazon-ebs 인경우, AMI생성시 소스 AMI에서 EC2 인스턴스를 시작하고 실행중인 머신을 프로비저닝 한 다음 해당 머신에서 AMI를 생성하여 AMI를 빌드합니다.
+
 
 ~~~
 FROM alpine:3.7
