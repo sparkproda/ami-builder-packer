@@ -47,7 +47,11 @@
         ]
       }
     ],
-    "provisioners": [     
+    "provisioners": [    
+      {
+        "type": "shell",
+        "script": "install-package.sh"
+      }, 
       {
         "type": "ansible",
         "playbook_file": "ansible_common.yml",
