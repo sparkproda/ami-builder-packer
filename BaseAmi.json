@@ -25,7 +25,7 @@
           "block-device-mapping.volume-type": "gp2",
           "root-device-type": "ebs"
           },
-          "owners": ["558716735562"],
+          "owners": ["099720109477"],
           "most_recent": true
         },  
         "instance_type": "t2.micro",
